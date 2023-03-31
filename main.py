@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import filedialog
 
-# ------------------- SOME CONSTANTS ------------------------------------#
+# ------------------- CONSTANTS ------------------------------------#
 WIDTH = 700
 HEIGHT = 500
 FONT = ("Times New Roman", 16, "normal")
@@ -17,6 +17,9 @@ def update_choice(*args):
 def select_file(*args):
     file_path = filedialog.askopenfilename()
     image_entry.insert(0, file_path)
+
+def watermark(*args):
+    pass
 
 # ------------------- USER INTERFACE SETUP ------------------------------#
 window = Tk()
@@ -60,6 +63,9 @@ size = OptionMenu(window, size_value, *size_options, command=update_choice)
 size.grid(row=4, column=1, columnspan=2, pady=5)
 
 user_choice = Label(text=f"Watermark will be placed at {value_placement.get()}\n And Size will be {size_value.get()}", font=FONT)
-user_choice.grid(row=5, column=0, columnspan=3, pady=15)
+user_choice.grid(row=5, column=0, columnspan=3, pady=10)
+
+submit = Button(text="WaterMark", font=("Times New Roman", 14, "bold"), command=watermark, background="lightgreen")
+submit.grid(row=6, column=0, columnspan=3, pady=15)
 
 window.mainloop()
