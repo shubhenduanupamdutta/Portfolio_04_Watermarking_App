@@ -20,7 +20,9 @@ def select_file(*args):
     image_entry.insert(0, file_path)
 
 
-def get_watermark_size(image_size, watermark_size, scale):
+def get_watermark_size(image_size: tuple[int, int], watermark_size: tuple[int, int], scale: float) -> tuple[int, int]:
+    """Takes image size , 2-tuple, watermark_size (2_tuple) and scale of watermark as input, returns what watermark size
+    should be."""
     img_width, img_height = image_size
     wm_width, wm_height = watermark_size
     wm_aspect = wm_width / wm_height
@@ -39,6 +41,7 @@ def get_watermark_size(image_size, watermark_size, scale):
 
 
 def watermark(*args):
+    """ Watermark the image referenced in the GUI, with available watermark."""
     watermark_size = size_value.get()
     watermark_position = value_placement.get()
     watermark_file = f"watermark.png"
